@@ -4,7 +4,7 @@ import dotenv from 'dotenv';
 import express from 'express';
 import moviesRouter from './api/movies';
 import usersRouter from './api/users';
-//import genres from './api/genres';
+import genresRouter from './api/genres';
 
 dotenv.config();
 
@@ -27,7 +27,7 @@ app.use(express.json());
 
 app.use('/api/movies', moviesRouter);
 
-//app.use('/api/genres', genres);
+app.use('/api/genres', genresRouter);
 
 //Users router
 app.use('/api/users', usersRouter);

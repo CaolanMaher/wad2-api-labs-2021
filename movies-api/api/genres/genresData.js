@@ -1,4 +1,4 @@
-export const genres= {
+const genres= {
     "genres": [
         {
             "id": 28,

@@ -1,17 +1,24 @@
 import express from 'express';
-import { genres } from './genresData';
+//import { genres } from './genresData';
+import Genre from './genreModel';
 //import uniqid from 'uniqid'
 
 const router = express.Router(); 
-router.get('/', (req, res) => {
-    res.json(genres);
+//router.get('/', (req, res) => {
+//    res.json(Genre);
+//});
+
+// Get all genres
+router.get('/', async (req, res) => {
+    const genres = await Genre.find();
+    res.status(200).json(genres);
 });
 
 // Get genre details
 router.get('/genres', (req, res) => {
     const id = parseInt(req.params.id);
-    if (genres.id == id) {
-        res.status(200).json(genres);
+    if (Genre.id == id) {
+        res.status(200).json(Genre);
     } else {
         res.status(404).json({
             message: 'The resource you requested could not be found.',
