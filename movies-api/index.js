@@ -1,3 +1,5 @@
+import './seedData'
+import './db';
 import dotenv from 'dotenv';
 import express from 'express';
 import moviesRouter from './api/movies';
@@ -9,7 +11,7 @@ const app = express();
 
 const port = process.env.PORT;
 
-app.use(express.static('public'));
+//app.use(express.static('public'));
 
 app.use(express.json());
 
