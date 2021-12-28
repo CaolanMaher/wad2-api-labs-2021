@@ -5,28 +5,35 @@ import uniqid from 'uniqid'
 import tvShowModel from './tvShowModel';
 import asyncHandler from 'express-async-handler';
 import {
-    getTVShows
+    getTVShowsPage
   } from '../tmdb-api';
 
 const router = express.Router(); 
 
-router.get('/tvshows', asyncHandler(async (req, res) => {
-    let { page = 1, limit = 10 } = req.query; // destructure page and limit and set default values
-    [page, limit] = [+page, +limit]; //trick to convert to numeric (req.query will contain string values)
+router.get('/', async (req, res) => {
+    //const upcomingMovies = await getUpcomingMovies(page);
+    //res.status(200).json(upcomingMovies);
 
-    const totalDocumentsPromise = movieModel.estimatedDocumentCount(); //Kick off async calls
-    const tvShowsPromise = tvShowModel.find().limit(limit).skip((page - 1) * limit);
+    let { page = 1} = req.query; // destructure page and limit and set default values
+    page = +page; //trick to convert to numeric (req.query will contain string values)
 
-    const totalDocuments = await totalDocumentsPromise; //wait for the above promises to be fulfilled
-    const tvShows = await tvShowsPromise;
+    console.info("Getting TVSHOWS");
 
-    const returnObject = { page: page, total_pages: Math.ceil(totalDocuments / limit), total_results: totalDocuments, results: tvShows };//construct return Object and insert into response object
+    const tvShows = await getTVShowsPage(page);
 
-    res.status(200).json(returnObject);
-}));
+    //const totalDocumentsPromise = movieModel.estimatedDocumentCount(); //Kick off async calls
+    //const moviesPromise = movieModel.find().limit(limit).skip((page - 1) * limit);
+
+    //const totalDocuments = await totalDocumentsPromise; //wait for the above promises to be fulfilled
+    //const movies = await moviesPromise;
+
+    //const returnObject = { page: page, total_pages: Math.ceil(upcomingMovies / limit), total_results: upcomingMovies, results: upcomingMovies };//construct return Object and insert into response object
+
+    res.status(200).json(tvShows);
+});
 
 // Get TV Show details
-router.get('/tvshows/:id', asyncHandler(async (req, res) => {
+router.get('/:id', asyncHandler(async (req, res) => {
     const id = parseInt(req.params.id);
     const tvShow = await tvShowModel.findByTVShowDBId(id);
     if (tvShow) {

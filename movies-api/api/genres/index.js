@@ -2,6 +2,9 @@ import express from 'express';
 //import { genres } from './genresData';
 import Genre from './genreModel';
 //import uniqid from 'uniqid'
+import {
+    getGenres
+} from '../tmdb-api'
 
 const router = express.Router(); 
 //router.get('/', (req, res) => {
@@ -10,7 +13,8 @@ const router = express.Router();
 
 // Get all genres
 router.get('/', async (req, res) => {
-    const genres = await Genre.find();
+    //const genres = await Genre.find();
+    const genres = await getGenres();
     res.status(200).json(genres);
 });
 
