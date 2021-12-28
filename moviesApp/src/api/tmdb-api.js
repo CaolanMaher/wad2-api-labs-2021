@@ -151,59 +151,50 @@ export const getMovies = () => {
           'Authorization': window.localStorage.getItem('token')
         }
       }
-    ).then((response) => {
-      if(!response.ok) {
-        throw new Error(response.json().message);
-      }
-      return response.json();
-    })
-    .catch((error) => {
-      throw error
-    })
+    ).then(res => res.json());
 };
 
   export const getTVShowImages = ({ queryKey }) => {
     const [, idPart] = queryKey;
     const { id } = idPart;
     return fetch(
-      `https://api.themoviedb.org/3/tv/${id}/images?api_key=${process.env.REACT_APP_TMDB_KEY}`
-    ).then( (response) => {
-      if (!response.ok) {
-        throw new Error(response.json().message);
+      //`https://api.themoviedb.org/3/tv/${id}/images?api_key=${process.env.REACT_APP_TMDB_KEY}`
+      `/api/tvshows/${id}/images`
+      ,{headers: {
+        'Authorization': window.localStorage.getItem('token')
       }
-      return response.json();
-  
-    })
-    .catch((error) => {
-      throw error
-   });
+    }
+    ).then(res => res.json());
   };
 
   export const getTVShowGenres = async () => {
     return fetch(
-      "https://api.themoviedb.org/3/genre/tv/list?api_key=" +
-        process.env.REACT_APP_TMDB_KEY +
-        "&language=en-US"
-    ).then( (response) => {
-      if (!response.ok) {
-        throw new Error(response.json().message);
+      //"https://api.themoviedb.org/3/genre/tv/list?api_key=" +
+      //  process.env.REACT_APP_TMDB_KEY +
+      //  "&language=en-US"
+      'api/genres/tvshows'
+      ,{headers: {
+        'Authorization': window.localStorage.getItem('token')
       }
-      return response.json();
-    })
-    .catch((error) => {
-      throw error
-   });
+    }
+    ).then(res => res.json());
   };
 
   export const getTVShowReviews = (id) => {
+    console.info("Calling Movie Reviews");
+
     return fetch(
-      `https://api.themoviedb.org/3/tv/${id}/reviews?api_key=${process.env.REACT_APP_TMDB_KEY}`
-    )
-      .then((res) => res.json())
-      .then((json) => {
-        // console.log(json.results);
-        return json.results;
-      });
+      //`https://api.themoviedb.org/3/movie/${id}/reviews?api_key=${process.env.REACT_APP_TMDB_KEY}`
+      `/api/tvshows/${id}/reviews`
+      ,{headers: {
+        'Authorization': window.localStorage.getItem('token')
+      }
+    }
+    ).then((res) => res.json())
+    .then((json) => {
+      // console.log(json.results);
+      return json.results;
+    });
   };
 
   export const getTVShow = (args) => {
@@ -211,44 +202,35 @@ export const getMovies = () => {
     const [, idPart] = args.queryKey;
     const { id } = idPart;
     return fetch(
-      `https://api.themoviedb.org/3/tv/${id}?api_key=${process.env.REACT_APP_TMDB_KEY}`
-    ).then((response) => {
-      if (!response.ok) {
-        throw new Error(response.json().message);
+      //`https://api.themoviedb.org/3/tv/${id}?api_key=${process.env.REACT_APP_TMDB_KEY}`
+      `/api/tvshows/${id}`
+      ,{headers: {
+        'Authorization': window.localStorage.getItem('token')
       }
-      return response.json();
-    })
-    .catch((error) => {
-      throw error
-   });
+    }
+    ).then(res => res.json());
   };
 
   export const getTVShowLanguages = async () => {
     return fetch(
-      "https://api.themoviedb.org/3/configuration/languages?api_key=" +
-        process.env.REACT_APP_TMDB_KEY
-    ).then( (response) => {
-      if (!response.ok) {
-        throw new Error(response.json().message);
+      //"https://api.themoviedb.org/3/configuration/languages?api_key=" +
+      //  process.env.REACT_APP_TMDB_KEY
+      '/api/languages'
+      ,{headers: {
+        'Authorization': window.localStorage.getItem('token')
       }
-      return response.json();
-    })
-    .catch((error) => {
-      throw error
-   });
+    }
+    ).then(res => res.json());
   };
 
   export const getMovieLanguages = async () => {
     return fetch(
-      "https://api.themoviedb.org/3/configuration/languages?api_key=" +
-        process.env.REACT_APP_TMDB_KEY
-    ).then( (response) => {
-      if (!response.ok) {
-        throw new Error(response.json().message);
+      //"https://api.themoviedb.org/3/configuration/languages?api_key=" +
+      //  process.env.REACT_APP_TMDB_KEY
+      '/api/languages'
+      ,{headers: {
+        'Authorization': window.localStorage.getItem('token')
       }
-      return response.json();
-    })
-    .catch((error) => {
-      throw error
-   });
+    }
+    ).then(res => res.json());
   };

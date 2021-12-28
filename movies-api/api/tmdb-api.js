@@ -132,7 +132,6 @@ export const getGenres = async () => {
 
     return fetch(
       `https://api.themoviedb.org/3/discover/tv?api_key=${process.env.TMDB_KEY}&page=` + page
-      //'/api/tvshows'
     ).then((response) => {
         if (!response.ok) {
             throw new Error(response.json().message);
@@ -142,4 +141,68 @@ export const getGenres = async () => {
         .catch((error) => {
             throw error
         });
+  };
+
+  export const getTVShowImages = (id) => {
+    //const [, idPart] = queryKey;
+    //const { id } = idPart;
+
+    console.info("Fetching TVShow Images");
+
+    return fetch(
+      `https://api.themoviedb.org/3/tv/${id}/images?api_key=${process.env.TMDB_KEY}`
+      //`/api/movies/${id}/images`
+    ).then( (response) => {
+      if (!response.ok) {
+        throw new Error(response.json().message);
+      }
+      return response.json();
+  
+    })
+    .catch((error) => {
+      throw error
+   });
+  };
+
+  export const getTVShow = (id) => {
+    //console.log(args)
+    //const [, idPart] = args.queryKey;
+    //const { id } = idPart;
+    return fetch(
+      `https://api.themoviedb.org/3/tv/${id}?api_key=${process.env.TMDB_KEY}`
+    ).then((response) => {
+      if (!response.ok) {
+        throw new Error(response.json().message);
+      }
+      return response.json();
+    })
+    .catch((error) => {
+      throw error
+   });
+  };
+
+  export const getTVShowReviews = (id) => {
+
+    console.info("Fetching Movie Reviews");
+
+    return fetch(
+      `https://api.themoviedb.org/3/tv/${id}/reviews?api_key=${process.env.TMDB_KEY}`
+      //`/api/movies/${id}/reviews`
+      ).then((response) => {
+        if(!response.ok) {
+          throw new Error(response.json().message);
+        }
+        return response.json();
+      })
+      .catch((error) => {
+        throw error
+      })
+  };
+
+  export const getLanguages = async () => {
+    return fetch(
+      "https://api.themoviedb.org/3/configuration/languages?api_key=" +
+        process.env.TMDB_KEY
+      //'/api/languages'
+    ).then(res => res.json());
   };

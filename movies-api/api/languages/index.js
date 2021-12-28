@@ -1,9 +1,10 @@
 import express from 'express';
 //import { genres } from './genresData';
-import Genre from './genreModel';
+//import Genre from './genreModel';
+import Language from './languageModel';
 //import uniqid from 'uniqid'
 import {
-    getGenres
+    getLanguages
 } from '../tmdb-api'
 
 const router = express.Router(); 
@@ -11,24 +12,16 @@ const router = express.Router();
 //    res.json(Genre);
 //});
 
-// Get all movie genres
+// Get all languages
 router.get('/', async (req, res) => {
-    //const genres = await Genre.find();
-    const genres = await getGenres();
-    res.status(200).json(genres);
+    const languages = await getLanguages();
+    res.status(200).json(languages);
 });
 
-// Get all tvshow genres
-router.get('/tvshows', async (req, res) => {
-    //const genres = await Genre.find();
-    const genres = await getGenres();
-    res.status(200).json(genres);
-});
-
-// Get genre details
-router.get('/genres', (req, res) => {
+// Get language details
+router.get('/languages', (req, res) => {
     const id = parseInt(req.params.id);
-    if (Genre.id == id) {
+    if (Language.iso_639_1 == id) {
         res.status(200).json(Genre);
     } else {
         res.status(404).json({

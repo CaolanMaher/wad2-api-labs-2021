@@ -5,7 +5,10 @@ import uniqid from 'uniqid'
 import tvShowModel from './tvShowModel';
 import asyncHandler from 'express-async-handler';
 import {
-    getTVShowsPage
+    getTVShowsPage,
+    getTVShowImages,
+    getTVShow,
+    getTVShowReviews
   } from '../tmdb-api';
 
 const router = express.Router(); 
@@ -32,12 +35,18 @@ router.get('/', async (req, res) => {
     res.status(200).json(tvShows);
 });
 
-// Get TV Show details
+// Get tvshow details
 router.get('/:id', asyncHandler(async (req, res) => {
+
+    console.info("Get TVShow Called");
+
     const id = parseInt(req.params.id);
-    const tvShow = await tvShowModel.findByTVShowDBId(id);
-    if (tvShow) {
-        res.status(200).json(tvShow);
+
+    const tvShowDetails = await getTVShow(id);
+
+    //const movie = await movieModel.findByMovieDBId(id);
+    if (tvShowDetails) {
+        res.status(200).json(tvShowDetails);
     } else {
         res.status(404).json({message: 'The resource you requested could not be found.', status_code: 404});
     }
@@ -45,11 +54,16 @@ router.get('/:id', asyncHandler(async (req, res) => {
 
 
 
-// Get TV Show reviews
-router.get('/tvshows/:id/reviews', (req, res) => {
+// Get movie reviews
+router.get('/:id/reviews', asyncHandler(async (req, res) => {
     const id = parseInt(req.params.id);
+
+    console.info("Fetching Movie Reviews");
+
+    const tvShowReviews = await getTVShowReviews(id);
+
     // find reviews in list
-    if (tvShowReviews.id == id) {
+    if (tvShowReviews) {
         res.status(200).json(tvShowReviews);
     } else {
         res.status(404).json({
@@ -57,7 +71,7 @@ router.get('/tvshows/:id/reviews', (req, res) => {
             status_code: 404
         });
     }
-});
+}));
 
 //Post a movie review
 router.post('/tvshows/:id/reviews', (req, res) => {
@@ -77,9 +91,31 @@ router.post('/tvshows/:id/reviews', (req, res) => {
     }
 });
 
+// Get tvshow images
+router.get('/:id/images', asyncHandler(async (req, res) => {
+
+    const id = parseInt(req.params.id);
+
+    console.info("Calling getTVShowImages");
+
+    const tvShowImages = await getTVShowImages(id);
+
+    // find reviews in list
+    if (tvShowImages) {
+        res.status(200).json(tvShowImages);
+    } else {
+        res.status(404).json({
+            message: 'The resource you requested could not be found.',
+            status_code: 404
+        });
+    }
+}));
+
+/*
 router.get('/tmdb/tvshows', asyncHandler( async(req, res) => {
     const tvShows = await getTVShows();
     res.status(200).json(tvShows);
   }));
+  */
 
 export default router;
