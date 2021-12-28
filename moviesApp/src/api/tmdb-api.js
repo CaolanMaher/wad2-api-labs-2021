@@ -21,7 +21,8 @@ export const getMovies = () => {
   export const getMoviesPage = (page = 0) => {
     return fetch(
       //`https://api.themoviedb.org/3/discover/movie?api_key=${process.env.REACT_APP_TMDB_KEY}&language=en-US&include_adult=false&include_video=false&page=` + page
-      '/api/movies?page=1&limit=5',{headers: {
+      '/api/movies?page=' + page + '&limit=5'
+      ,{headers: {
         'Authorization': window.localStorage.getItem('token')
       }
     }
@@ -99,7 +100,12 @@ export const getMovies = () => {
 
   export const getUpcomingMovies = () => {
       return fetch(
-          `https://api.themoviedb.org/3/movie/upcoming?api_key=${process.env.REACT_APP_TMDB_KEY}&language=en-US&page=1`
+          //`https://api.themoviedb.org/3/movie/upcoming?api_key=${process.env.REACT_APP_TMDB_KEY}&language=en-US&page=1`
+          '/api/movies/tmdb/upcoming'
+          ,{headers: {
+            'Authorization': window.localStorage.getItem('token')
+          }
+        }
       )
       .then((response) => {
         if (!response.ok) {
@@ -111,6 +117,26 @@ export const getMovies = () => {
          throw error
       });
   };
+
+  export const getUpcomingMoviesPage = (page = 0) => {
+    return fetch(
+        //`https://api.themoviedb.org/3/movie/upcoming?api_key=${process.env.REACT_APP_TMDB_KEY}&language=en-US&page=1`
+        '/api/movies/tmdb/upcoming?page=' + page
+        ,{headers: {
+          'Authorization': window.localStorage.getItem('token')
+        }
+      }
+    )
+    .then((response) => {
+      if (!response.ok) {
+        throw new Error(response.json().message);
+      }
+      return response.json();
+    })
+    .catch((error) => {
+       throw error
+    });
+};
 
   // New Endpoints For Assignment
 

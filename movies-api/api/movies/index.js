@@ -1,6 +1,6 @@
 import express from 'express';
 import { movies, movieReviews, movieDetails } from './moviesData';
-import uniqid from 'uniqid'
+import uniqid from 'uniqid';
 import movieModel from './movieModel';
 import asyncHandler from 'express-async-handler';
 import {
@@ -68,7 +68,22 @@ router.post('/:id/reviews', (req, res) => {
 });
 
 router.get('/tmdb/upcoming', asyncHandler( async(req, res) => {
-    const upcomingMovies = await getUpcomingMovies();
+    //const upcomingMovies = await getUpcomingMovies(page);
+    //res.status(200).json(upcomingMovies);
+
+    let { page = 1} = req.query; // destructure page and limit and set default values
+    page = +page; //trick to convert to numeric (req.query will contain string values)
+
+    const upcomingMovies = await getUpcomingMovies(page);
+
+    //const totalDocumentsPromise = movieModel.estimatedDocumentCount(); //Kick off async calls
+    //const moviesPromise = movieModel.find().limit(limit).skip((page - 1) * limit);
+
+    //const totalDocuments = await totalDocumentsPromise; //wait for the above promises to be fulfilled
+    //const movies = await moviesPromise;
+
+    //const returnObject = { page: page, total_pages: Math.ceil(upcomingMovies / limit), total_results: upcomingMovies, results: upcomingMovies };//construct return Object and insert into response object
+
     res.status(200).json(upcomingMovies);
   }));
 
