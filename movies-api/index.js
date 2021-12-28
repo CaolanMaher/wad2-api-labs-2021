@@ -5,6 +5,7 @@ import express from 'express';
 import moviesRouter from './api/movies';
 import usersRouter from './api/users';
 import genresRouter from './api/genres';
+//import tvShowsRouter from './api/tvshows';
 import session from 'express-session';
 import passport from './authenticate';
 
@@ -30,6 +31,9 @@ app.use(passport.initialize());
 app.use(express.json());
 
 app.use('/api/movies', passport.authenticate('jwt', {session: false}), moviesRouter);
+//app.use('/api/movies', moviesRouter);
+
+//app.use('/api/tvshows', tvShowsRouter);
 
 app.use('/api/genres', genresRouter);
 

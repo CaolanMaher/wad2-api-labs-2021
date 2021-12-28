@@ -14,6 +14,17 @@ export const PublicPage = () => {
         </div>
     </>
 }
+
+export const TVShows = () => {
+    const context = useContext(MoviesContext);
+    return <>
+        <h2>TV Shows Data </h2>
+        <div>
+            {context.TVShows.results.map(tvShow => { return <>{tvShow.id},{tvShow.name}<br /></> })}
+        </div>
+    </>
+}
+
  export const Profile = () => {
     return <h2>My Profile </h2>
 }

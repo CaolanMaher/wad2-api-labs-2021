@@ -36,6 +36,7 @@ import React from "react";
               <Route path="/login" component={LoginPage} />
               <PrivateRoute path="/movies" component={Movies} />
               <PrivateRoute path="/profile" component={Profile} />
+              <PrivateRoute path="/tvshows" component={TVShows} />
               <Redirect from="*" to="/" />
             </Switch>
           </MovieProvider>
