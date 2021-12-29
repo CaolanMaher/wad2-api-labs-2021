@@ -28,6 +28,16 @@ export const addFavouriteMovie = (userName, id) => {
     }).then(res => res.json())
 };
 
+export const removeFavouriteMovie = (userName, id) => {
+    return fetch(`/api/users/${userName}/favourites`, {
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        method: 'delete',
+        body: JSON.stringify({ userName: userName, id: id })
+    }).then(res => res.json())
+};
+
 export const getFavouriteMovies = (username) => {
     return fetch(
         `/api/users/${username}/favourites`
@@ -55,6 +65,8 @@ export const getUser = (username) => {
         throw error
     });
 }
+
+
 
 /*
 export const getMovies = () => {

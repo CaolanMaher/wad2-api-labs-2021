@@ -1,11 +1,11 @@
 const  users = [
     {
-        'name': 'caolan',
+        'name': 'Caolan',
         'username': 'user1',
         'password': 'test1',
     },
     {
-        'name': 'caolan',
+        'name': 'Caolan',
         'username': 'user2',
         'password': 'test2',
     },

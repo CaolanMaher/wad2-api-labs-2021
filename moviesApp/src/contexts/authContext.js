@@ -34,7 +34,7 @@ export default AuthContextProvider;
 */
 
 import React, { useState, createContext } from "react";
-import { login, signup, addFavouriteMovie, getFavouriteMovies, getUser} from ".././api/movie-api";
+import { login, signup, addFavouriteMovie, getFavouriteMovies, getUser, removeFavouriteMovie} from ".././api/movie-api";
 
 export const AuthContext = createContext(null);
 
@@ -66,15 +66,36 @@ const AuthContextProvider = (props) => {
     }
   };
 
-  const addToFavorites = (movie) => {
-    setFavorites([...favorites,movie])
-    addFavouriteMovie(userName,movie.id);
+  const addToFavorites = async (movie) => {
+
+    //console.log(movie._id);
+    //console.log(movie);
+
+    if(!favorites.includes(movie)) {
+      setFavorites([...favorites], movie);
+      addFavouriteMovie(userName,movie.id);
+      //setFavorites(await getFavouriteMovies(userName));
+    }
+  }
+
+  const removeFromFavorites = async (movie) => {
+    if(favorites.includes(movie)) {
+      //setFavorites([...favorites,movie])
+
+      const index = favorites.indexOf(movie);
+      favorites.splice(index, 1);
+
+      removeFavouriteMovie(userName,movie.id);
+
+      setFavorites([...favorites]);
+      //setFavorites(await getFavouriteMovies(userName));
+    }
   }
 
   const register = async (name, username, password) => {
     const result = await signup(name, username, password);
     console.log(result.code);
-    return (result.code == 201) ? true : false;
+    return (result.code === 201) ? true : false;
   };
 
   const signout = () => {
@@ -91,6 +112,7 @@ const AuthContextProvider = (props) => {
         //name,
         userName,
         addToFavorites,
+        removeFromFavorites,
         favorites,
         getUser,
         user

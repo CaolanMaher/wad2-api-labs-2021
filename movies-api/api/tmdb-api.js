@@ -1,14 +1,12 @@
 import fetch from 'node-fetch';
 
-/*
-export const getMoviesPage = (page = 0) => {
+export const getMoviesPage = (page = 1) => {
+
+  console.info("Fetching Movies");
+
     return fetch(
-      //`https://api.themoviedb.org/3/discover/movie?api_key=${process.env.REACT_APP_TMDB_KEY}&language=en-US&include_adult=false&include_video=false&page=` + page
-      '/api/movies?page=' + page + '&limit=5'
-      ,{headers: {
-        'Authorization': window.localStorage.getItem('token')
-      }
-    }
+      `https://api.themoviedb.org/3/discover/movie?api_key=${process.env.TMDB_KEY}&language=en-US&include_adult=false&include_video=false&page=` + page
+      //'/api/movies?page=' + page
     ).then((response) => {
       if (!response.ok) {
         throw new Error(response.json().message);
@@ -19,7 +17,6 @@ export const getMoviesPage = (page = 0) => {
        throw error
     });
   };
-  */
 
   export const getMovie = (id) => {
     //console.log(args)

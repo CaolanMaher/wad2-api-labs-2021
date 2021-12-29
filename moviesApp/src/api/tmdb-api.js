@@ -18,10 +18,10 @@ export const getMovies = () => {
   };
   */
 
-  export const getMoviesPage = (page = 0) => {
+  export const getMoviesPage = (page = 1) => {
     return fetch(
       //`https://api.themoviedb.org/3/discover/movie?api_key=${process.env.REACT_APP_TMDB_KEY}&language=en-US&include_adult=false&include_video=false&page=` + page
-      '/api/movies?page=' + page + '&limit=5'
+      '/api/movies?page=' + page
       ,{headers: {
         'Authorization': window.localStorage.getItem('token')
       }

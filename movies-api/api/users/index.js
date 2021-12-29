@@ -3,6 +3,7 @@ import User from './userModel';
 import asyncHandler from 'express-async-handler';
 import jwt from 'jsonwebtoken';
 import movieModel from '../movies/movieModel';
+import { getMovie } from '../tmdb-api';
 
 const router = express.Router(); // eslint-disable-line
 
@@ -59,23 +60,51 @@ router.put('/:id', async (req, res) => {
 router.post('/:userName/favourites', asyncHandler(async (req, res) => {
     const newFavourite = req.body.id;
     const userName = req.params.userName;
-    const movie = await movieModel.findByMovieDBId(newFavourite);
+    //const movie = await movieModel.findByMovieDBId(newFavourite);
+    const movie = await getMovie(newFavourite);
     const user = await User.findByUserName(userName);
 
-    if(!user.favourites.includes(movie._id)) {
-        await user.favourites.push(movie._id);
+    if(!user.favourites.includes(movie.id)) {
+        await user.favourites.push(movie.id);
         await user.save(); 
-        res.status(201).json(user); 
+        res.status(201).json(user);
     }
     else {
         res.status(404).json({ code: 404, msg: 'Movie Already In Favourites' });
     }
   }));
 
+  //Remove a favourite
+router.delete('/:userName/favourites', asyncHandler(async (req, res) => {
+  const newFavourite = req.body.id;
+  const userName = req.params.userName;
+  //const movie = await movieModel.findByMovieDBId(newFavourite);
+  //const movie = await getMovie(newFavourite);
+  const user = await User.findByUserName(userName);
+
+  if(user.favourites.includes(newFavourite)) {
+      const index = user.favourites.indexOf(newFavourite);
+      await user.favourites.splice(index, 1);
+      await user.save(); 
+      res.status(201).json(user);
+  }
+  else {
+      res.status(404).json({ code: 404, msg: 'Movie Not In Favourites' });
+  }
+}));
+
   router.get('/:userName/favourites', asyncHandler( async (req, res) => {
     const userName = req.params.userName;
-    const user = await User.findByUserName(userName).populate('favourites');
-    res.status(200).json(user.favourites);
+    //const user = await User.findByUserName(userName).populate('favourites');
+    const user = await User.findByUserName(userName);
+    const favourites = user.favourites;
+    const newFavourites = [];
+
+    for(let i = 0; i < favourites.length; i++) {
+      newFavourites[i] = await getMovie(favourites[i]);
+    }
+
+    res.status(200).json(newFavourites);
   }));
 
   router.get('/:userName', asyncHandler( async (req, res) => {
