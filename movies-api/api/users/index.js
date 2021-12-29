@@ -77,4 +77,11 @@ router.post('/:userName/favourites', asyncHandler(async (req, res) => {
     const user = await User.findByUserName(userName).populate('favourites');
     res.status(200).json(user.favourites);
   }));
+
+  router.get('/:userName', asyncHandler( async (req, res) => {
+    const username = req.params.userName;
+    const user = await User.findByUserName(username);
+    res.status(200).json(user);
+  }));
+
 export default router;

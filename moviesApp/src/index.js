@@ -19,6 +19,7 @@ import TVShowReviewPage from "./pages/tvShowReviewPage"; // NEW FOR ASSIGNMENT
 import TVShowDetailsPage from "./pages/tvShowDetailsPage"; // NEW FOR ASSIGNMENT
 import FavoriteTVShowsPage from "./pages/favoriteTVShowPage"; // NEW FOR ASSIGNMENT
 import LoginPage from "./pages/loginPage";
+import SignUpPage from "./pages/signUpPage";
 import PrivateRoute from "./components/privateRoute";
 import BaseAuthHeader from "./components/authHeader";
 import AuthContextProvider from "./contexts/authContext";
@@ -48,6 +49,7 @@ const App = () => {
               <Route exact path="/movies/top_rated" component={TopRatedMoviePage} />
               <Route exact path="/reviews/form" component={AddMovieReviewPage} />
               <Route path="/login" component={LoginPage} />
+              <Route path="/signup" component={SignUpPage} />
               <Route path="/reviews/:id" component={MovieReviewPage} />
               <Route path="/tvshowreviews/:id" component={TVShowReviewPage} />
               <Route exact path="/movies/favorites" component={FavoriteMoviesPage} />

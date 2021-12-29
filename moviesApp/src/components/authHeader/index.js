@@ -11,10 +11,14 @@ const BaseAuthHeader = (props) => {
   const context = useContext(AuthContext);
   const { history } = props;
 
+  const name = context.user.name;
+
+  //console.info(context.name);
+
   return context.isAuthenticated ? (
     <Paper elevation={4}>
     <Typography variant="h4" component="h3">
-        Welcome! <button onClick={() => context.signout()}>Sign out</button>
+        Welcome {name}! <button onClick={() => context.signout()}>Sign out</button>
     </Typography>
     </Paper>
     ) : (

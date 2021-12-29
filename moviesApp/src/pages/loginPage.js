@@ -105,6 +105,7 @@ import { Link } from "react-router-dom";
 
 const LoginPage = props => {
   const context = useContext(AuthContext)
+  //const [name, setName] = useState("");
   const [userName, setUserName] = useState("");
   const [password, setPassword] = useState("");
 

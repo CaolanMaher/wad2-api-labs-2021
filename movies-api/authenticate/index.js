@@ -12,7 +12,9 @@ let jwtOptions = {};
 jwtOptions.jwtFromRequest = ExtractJWT.fromAuthHeaderAsBearerToken();
 jwtOptions.secretOrKey = process.env.SECRET;
 const strategy = new JWTStrategy(jwtOptions, async (payload, next) => {
+  //console.info(payload);
   const user = await UserModel.findByUserName(payload);
+  //console.info(user.name);
   if (user) {
     next(null, user);
   } else {
@@ -20,5 +22,6 @@ const strategy = new JWTStrategy(jwtOptions, async (payload, next) => {
   }
 });
 passport.use(strategy);
+//console.info(passport.name);
 
 export default passport;
