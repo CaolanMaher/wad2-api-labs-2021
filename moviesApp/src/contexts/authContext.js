@@ -34,7 +34,7 @@ export default AuthContextProvider;
 */
 
 import React, { useState, createContext } from "react";
-import { login, signup, addFavouriteMovie, getFavouriteMovies, getUser, removeFavouriteMovie, updateUser} from ".././api/movie-api";
+import { login, signup, addFavouriteMovie, addFavouriteTVShow, getFavouriteMovies, getFavouriteTVShows, getUser, removeFavouriteMovie, removeFavouriteTVShow, updateUser} from ".././api/movie-api";
 
 export const AuthContext = createContext(null);
 
@@ -45,6 +45,7 @@ const AuthContextProvider = (props) => {
   //const [name, setName] = useState("");
   const [userName, setUserName] = useState("");
   const [favorites, setFavorites] = useState( [] );
+  const [favoritesShow, setFavoritesShow] = useState( [] );
   const [user, setCurrentUser] = useState("");
 
   //Function to put JWT token in local storage.
@@ -62,6 +63,7 @@ const AuthContextProvider = (props) => {
       //setName(name);
       setUserName(username);
       setFavorites(await getFavouriteMovies(username));
+      setFavoritesShow(await getFavouriteTVShows(username));
       setCurrentUser(await getUser(username));
     }
   };
@@ -100,6 +102,30 @@ const AuthContextProvider = (props) => {
     }
   }
 
+  const addToFavoritesShow = async (tvShow) => {
+
+    if(!favoritesShow.includes(tvShow)) {
+      setFavorites([...favoritesShow, tvShow]);
+      //setFavorites([...favorites]);
+      addFavouriteTVShow(userName,tvShow.id);
+      //setFavorites(await getFavouriteMovies(userName));
+    }
+  }
+
+  const removeFromFavoritesShow = async (tvShow) => {
+    if(favoritesShow.includes(tvShow)) {
+      //setFavorites([...favorites,movie])
+
+      const index = favoritesShow.indexOf(tvShow);
+      favoritesShow.splice(index, 1);
+
+      removeFavouriteTVShow(userName,tvShow.id);
+
+      setFavorites([...favoritesShow]);
+      //setFavorites(await getFavouriteMovies(userName));
+    }
+  }
+
   const register = async (name, username, password) => {
     const result = await signup(name, username, password);
     console.log(result.code);
@@ -123,6 +149,9 @@ const AuthContextProvider = (props) => {
         addToFavorites,
         removeFromFavorites,
         favorites,
+        addToFavoritesShow,
+        removeFromFavoritesShow,
+        favoritesShow,
         getUser,
         user,
         update

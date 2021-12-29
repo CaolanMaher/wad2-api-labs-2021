@@ -27,7 +27,7 @@ const FavoriteMoviesPage = () => {
   if (isLoading) {
     return <Spinner />;
   }
-  const movies = favoriteMovieQueries.map((q) => q.data);
+  //const movies = favoriteMovieQueries.map((q) => q.data);
 
   return (
     <PageTemplate

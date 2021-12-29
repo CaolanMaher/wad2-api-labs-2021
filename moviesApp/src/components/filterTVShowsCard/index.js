@@ -11,7 +11,7 @@ import SearchIcon from "@material-ui/icons/Search";
 import FormControl from "@material-ui/core/FormControl";
 import Select from "@material-ui/core/Select";
 //import img from '../../images/pexels-dziana-hasanbekava-5480827.jpg'
-import { getTVShowGenres } from "../../api/tmdb-api";
+import { getGenres } from "../../api/tmdb-api";
 import { getTVShowLanguages } from "../../api/tmdb-api";
 import { useQuery } from "react-query";
 import Spinner from '../spinner'
@@ -34,7 +34,7 @@ const useStyles = makeStyles((theme) => ({
 
 export default function FilterMoviesCard(props) {
   const classes = useStyles();
-  const { data, error, isLoading, isError } = useQuery("TVShowgenres", getTVShowGenres);
+  const { data, error, isLoading, isError } = useQuery("TVShowgenres", getGenres);
   const { data: languages, error: languagesError, isLoading: languagesIsLoading, isError: languagesIsError } = useQuery("showLanguages", getTVShowLanguages);
   //const { data: rated, error: ratedError, isLoading: ratedIsLoading, isError: ratedIsError } = useQuery("showProviders", getTopRatedTVShow);
   //const { data: latest, error: latestError, isLoading: latestIsLoading, isError: latestIsError } = useQuery("showProviders", getLatestTVShows);

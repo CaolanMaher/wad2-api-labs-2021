@@ -3,7 +3,10 @@ import User from './userModel';
 import asyncHandler from 'express-async-handler';
 import jwt from 'jsonwebtoken';
 import movieModel from '../movies/movieModel';
-import { getMovie } from '../tmdb-api';
+import { 
+  getMovie,
+  getTVShow
+ } from '../tmdb-api';
 
 const router = express.Router(); // eslint-disable-line
 
@@ -96,16 +99,35 @@ router.delete('/:userName/favourites', asyncHandler(async (req, res) => {
   }
 }));
 
-//Add a favourite TV Show
-router.post('/:userName/favourites', asyncHandler(async (req, res) => {
+//Remove a favourite TVShow
+router.delete('/:userName/favourites_show', asyncHandler(async (req, res) => {
   const newFavourite = req.body.id;
   const userName = req.params.userName;
   //const movie = await movieModel.findByMovieDBId(newFavourite);
-  const movie = await getMovie(newFavourite);
+  //const movie = await getMovie(newFavourite);
   const user = await User.findByUserName(userName);
 
-  if(!user.favourites.includes(movie.id)) {
-      await user.favourites.push(movie.id);
+  if(user.favouritesShow.includes(newFavourite)) {
+      const index = user.favouritesShow.indexOf(newFavourite);
+      await user.favouritesShow.splice(index, 1);
+      await user.save(); 
+      res.status(201).json(user);
+  }
+  else {
+      res.status(404).json({ code: 404, msg: 'TV Show Not In Favourites' });
+  }
+}));
+
+//Add a favourite TV Show
+router.post('/:userName/favourites_show', asyncHandler(async (req, res) => {
+  const newFavourite = req.body.id;
+  const userName = req.params.userName;
+  //const movie = await movieModel.findByMovieDBId(newFavourite);
+  const tvShow = await getTVShow(newFavourite);
+  const user = await User.findByUserName(userName);
+
+  if(!user.favouritesShow.includes(tvShow.id)) {
+      await user.favouritesShow.push(tvShow.id);
       await user.save(); 
       res.status(201).json(user);
   }
@@ -124,6 +146,27 @@ router.post('/:userName/favourites', asyncHandler(async (req, res) => {
 
     for(let i = 0; i < favourites.length; i++) {
       newFavourites[i] = await getMovie(favourites[i]);
+    }
+
+    res.status(200).json(newFavourites);
+  }));
+
+  router.get('/:userName', asyncHandler( async (req, res) => {
+    const username = req.params.userName;
+    const user = await User.findByUserName(username);
+    res.status(200).json(user);
+  }));
+
+  // get a users favourite tvShows
+  router.get('/:userName/favourites_show', asyncHandler( async (req, res) => {
+    const userName = req.params.userName;
+    //const user = await User.findByUserName(userName).populate('favourites');
+    const user = await User.findByUserName(userName);
+    const favourites = user.favouritesShow;
+    const newFavourites = [];
+
+    for(let i = 0; i < favourites.length; i++) {
+      newFavourites[i] = await getTVShow(favourites[i]);
     }
 
     res.status(200).json(newFavourites);
