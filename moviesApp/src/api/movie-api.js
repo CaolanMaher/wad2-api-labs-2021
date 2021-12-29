@@ -18,6 +18,16 @@ export const signup = (name, username, password) => {
     }).then(res => res.json())
 };
 
+export const updateUser = (name, username, id) => {
+    return fetch(`/api/users/${id}`, {
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        method: 'put',
+        body: JSON.stringify({ name: name, username: username })
+    }).then(res => res.json())
+};
+
 export const addFavouriteMovie = (userName, id) => {
     return fetch(`/api/users/${userName}/favourites`, {
         headers: {

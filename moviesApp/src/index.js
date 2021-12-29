@@ -20,6 +20,7 @@ import TVShowDetailsPage from "./pages/tvShowDetailsPage"; // NEW FOR ASSIGNMENT
 import FavoriteTVShowsPage from "./pages/favoriteTVShowPage"; // NEW FOR ASSIGNMENT
 import LoginPage from "./pages/loginPage";
 import SignUpPage from "./pages/signUpPage";
+import UpdatePage from "./pages/updatePage";
 import PrivateRoute from "./components/privateRoute";
 import BaseAuthHeader from "./components/authHeader";
 import AuthContextProvider from "./contexts/authContext";
@@ -48,6 +49,7 @@ const App = () => {
               <Route exact path="/movies/upcoming" component={UpcomingMoviesPage} />
               <Route exact path="/movies/top_rated" component={TopRatedMoviePage} />
               <Route exact path="/reviews/form" component={AddMovieReviewPage} />
+              <Route path="/update" component={UpdatePage} />
               <Route path="/login" component={LoginPage} />
               <Route path="/signup" component={SignUpPage} />
               <Route path="/reviews/:id" component={MovieReviewPage} />

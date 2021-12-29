@@ -45,10 +45,13 @@ router.post('/',asyncHandler( async (req, res, next) => {
 
 // Update a user
 router.put('/:id', async (req, res) => {
-    if (req.body._id) delete req.body._id;
+  console.info("Updated User");
+    //if (req.body._id) delete req.body._id;
     const result = await User.updateOne({
         _id: req.params.id,
     }, req.body);
+    //User.delete(req.body._id);
+    //const result = await User.create(req.body);
     if (result.matchedCount) {
         res.status(200).json({ code:200, msg: 'User Updated Sucessfully' });
     } else {
@@ -56,7 +59,7 @@ router.put('/:id', async (req, res) => {
     }
 });
 
-//Add a favourite. No Error Handling Yet. Can add duplicates too!
+//Add a favourite Movie
 router.post('/:userName/favourites', asyncHandler(async (req, res) => {
     const newFavourite = req.body.id;
     const userName = req.params.userName;
@@ -74,7 +77,7 @@ router.post('/:userName/favourites', asyncHandler(async (req, res) => {
     }
   }));
 
-  //Remove a favourite
+  //Remove a favourite Movie
 router.delete('/:userName/favourites', asyncHandler(async (req, res) => {
   const newFavourite = req.body.id;
   const userName = req.params.userName;
@@ -93,6 +96,25 @@ router.delete('/:userName/favourites', asyncHandler(async (req, res) => {
   }
 }));
 
+//Add a favourite TV Show
+router.post('/:userName/favourites', asyncHandler(async (req, res) => {
+  const newFavourite = req.body.id;
+  const userName = req.params.userName;
+  //const movie = await movieModel.findByMovieDBId(newFavourite);
+  const movie = await getMovie(newFavourite);
+  const user = await User.findByUserName(userName);
+
+  if(!user.favourites.includes(movie.id)) {
+      await user.favourites.push(movie.id);
+      await user.save(); 
+      res.status(201).json(user);
+  }
+  else {
+      res.status(404).json({ code: 404, msg: 'Movie Already In Favourites' });
+  }
+}));
+
+// get a users favourite movies
   router.get('/:userName/favourites', asyncHandler( async (req, res) => {
     const userName = req.params.userName;
     //const user = await User.findByUserName(userName).populate('favourites');
