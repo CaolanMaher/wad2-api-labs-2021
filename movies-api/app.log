@@ -1,0 +1,207 @@
+::ffff:127.0.0.1 - - [30/Dec/2021:14:39:58 +0000] "GET /api/movies?page=1 HTTP/1.1" 304 - "http://localhost:3000/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/96.0.4664.110 Safari/537.36"
+::ffff:127.0.0.1 - - [30/Dec/2021:14:39:58 +0000] "GET /api/genres HTTP/1.1" 304 - "http://localhost:3000/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/96.0.4664.110 Safari/537.36"
+::ffff:127.0.0.1 - - [30/Dec/2021:14:39:58 +0000] "GET /api/languages HTTP/1.1" 304 - "http://localhost:3000/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/96.0.4664.110 Safari/537.36"
+/api/movies?page=1 GET
+/api/genres GET
+/api/languages GET
+/api/movies?page=1 GET {}
+/api/genres GET {}
+/api/languages GET {}
+/api/users POST {"username":"user1","password":"test1"}
+/api/users/user1/favourites GET {}
+/api/users/user1/favourites_show GET {}
+/api/users/user1 GET {}
+/api/movies?page=1 GET -
+/api/genres GET -
+/api/languages GET -
+/api/users POST -
+/api/users/user1/favourites GET -
+/api/users/user1/favourites_show GET -
+/api/users/user1 GET -
+-, Thu, 30 Dec 2021 14:49:37 GMT, /api/movies?page=1 GET 
+-, Thu, 30 Dec 2021 14:49:38 GMT, /api/genres GET 
+-, Thu, 30 Dec 2021 14:49:38 GMT, /api/languages GET 
+634649, Thu, 30 Dec 2021 14:50:08 GMT, /api/movies/634649 GET 
+634649, Thu, 30 Dec 2021 14:50:08 GMT, /api/movies/634649/images GET 
+-, Thu, 30 Dec 2021 14:52:38 GMT, /api/users POST 
+-, Thu, 30 Dec 2021 14:52:38 GMT, /api/users/user1/favourites GET 
+-, Thu, 30 Dec 2021 14:52:39 GMT, /api/users/user1/favourites_show GET 
+-, Thu, 30 Dec 2021 14:52:39 GMT, /api/users/user1 GET 
+-, Thu, 30 Dec 2021 15:12:13 GMT, /api/movies?page=1 GET 
+-, Thu, 30 Dec 2021 15:12:13 GMT, /api/genres GET 
+-, Thu, 30 Dec 2021 15:12:13 GMT, /api/languages GET 
+-, Thu, 30 Dec 2021 15:17:45 GMT, /api/movies?page=1 GET 
+-, Thu, 30 Dec 2021 15:17:46 GMT, /api/genres GET 
+-, Thu, 30 Dec 2021 15:17:46 GMT, /api/languages GET 
+-, Thu, 30 Dec 2021 15:18:40 GMT, /api/movies?page=1 GET 
+-, Thu, 30 Dec 2021 15:18:44 GMT, /api/movies?page=1 GET 
+-, Thu, 30 Dec 2021 15:18:44 GMT, /api/genres GET 
+-, Thu, 30 Dec 2021 15:18:45 GMT, /api/languages GET 
+-, Thu, 30 Dec 2021 15:18:57 GMT, /api/movies?page=1 GET 
+-, Thu, 30 Dec 2021 15:18:57 GMT, /api/genres GET 
+-, Thu, 30 Dec 2021 15:18:57 GMT, /api/languages GET 
+-, Thu, 30 Dec 2021 16:24:06 GMT, /api/movies?page=1 GET 
+-, Thu, 30 Dec 2021 16:24:06 GMT, /api/genres GET 
+-, Thu, 30 Dec 2021 16:24:06 GMT, /api/languages GET 
+-, Thu, 30 Dec 2021 16:31:52 GMT, /api/genres GET 
+-, Thu, 30 Dec 2021 16:31:53 GMT, /api/languages GET 
+-, Thu, 30 Dec 2021 16:31:59 GMT, /api/users POST 
+-, Thu, 30 Dec 2021 16:32:00 GMT, /api/movies?page=1 GET 
+-, Thu, 30 Dec 2021 16:32:00 GMT, /api/users/user1/favourites GET 
+-, Thu, 30 Dec 2021 16:32:00 GMT, /api/users/user1/favourites_show GET 
+-, Thu, 30 Dec 2021 16:32:01 GMT, /api/users/user1 GET 
+-, Thu, 30 Dec 2021 16:32:08 GMT, /api/users/user1/favourites POST 
+-, Thu, 30 Dec 2021 16:32:09 GMT, /api/users/user1/favourites POST 
+-, Thu, 30 Dec 2021 16:32:10 GMT, /api/users/user1/favourites POST 
+634649, Thu, 30 Dec 2021 16:32:11 GMT, /api/movies/634649 GET 
+568124, Thu, 30 Dec 2021 16:32:11 GMT, /api/movies/568124 GET 
+624860, Thu, 30 Dec 2021 16:32:11 GMT, /api/movies/624860 GET 
+-, Thu, 30 Dec 2021 16:39:45 GMT, /api/genres GET 
+634649, Thu, 30 Dec 2021 16:39:45 GMT, /api/movies/634649 GET 
+624860, Thu, 30 Dec 2021 16:39:45 GMT, /api/movies/624860 GET 
+-, Thu, 30 Dec 2021 16:39:45 GMT, /api/languages GET 
+568124, Thu, 30 Dec 2021 16:39:45 GMT, /api/movies/568124 GET 
+-, Thu, 30 Dec 2021 16:50:26 GMT, /api/users/undefined/favourites GET 
+-, Thu, 30 Dec 2021 16:50:26 GMT, /api/users/undefined/favourites GET 
+-, Thu, 30 Dec 2021 16:51:10 GMT, /api/users/undefined/favourites GET 
+-, Thu, 30 Dec 2021 16:51:11 GMT, /api/users/undefined/favourites GET 
+-, Thu, 30 Dec 2021 16:51:20 GMT, /api/users/favourites GET 
+-, Thu, 30 Dec 2021 16:51:21 GMT, /api/users/favourites GET 
+-, Thu, 30 Dec 2021 16:51:24 GMT, /api/users/favourites GET 
+-, Thu, 30 Dec 2021 16:51:24 GMT, /api/users/favourites GET 
+-, Thu, 30 Dec 2021 16:52:10 GMT, /api/users/favourites GET 
+-, Thu, 30 Dec 2021 16:52:10 GMT, /api/users/favourites GET 
+-, Thu, 30 Dec 2021 16:52:46 GMT, /api/movies?page=1 GET 
+-, Thu, 30 Dec 2021 16:52:46 GMT, /api/genres GET 
+-, Thu, 30 Dec 2021 16:52:46 GMT, /api/languages GET 
+-, Thu, 30 Dec 2021 16:52:53 GMT, /api/users POST 
+-, Thu, 30 Dec 2021 16:52:53 GMT, /api/users/user1/favourites GET 
+-, Thu, 30 Dec 2021 16:52:53 GMT, /api/users/user1/favourites_show GET 
+-, Thu, 30 Dec 2021 16:52:54 GMT, /api/users/user1 GET 
+-, Thu, 30 Dec 2021 16:53:01 GMT, /api/users/user1/favourites GET 
+-, Thu, 30 Dec 2021 16:53:01 GMT, /api/users/user1/favourites GET 
+-, Thu, 30 Dec 2021 16:53:44 GMT, /api/users/favourites GET 
+-, Thu, 30 Dec 2021 16:53:44 GMT, /api/users/favourites GET 
+-, Thu, 30 Dec 2021 16:53:47 GMT, /api/users/favourites GET 
+-, Thu, 30 Dec 2021 16:53:47 GMT, /api/users/favourites GET 
+-, Thu, 30 Dec 2021 16:54:10 GMT, /api/movies?page=1 GET 
+-, Thu, 30 Dec 2021 16:54:10 GMT, /api/genres GET 
+-, Thu, 30 Dec 2021 16:54:10 GMT, /api/languages GET 
+-, Thu, 30 Dec 2021 16:54:17 GMT, /api/users POST 
+-, Thu, 30 Dec 2021 16:54:18 GMT, /api/users/user1/favourites GET 
+-, Thu, 30 Dec 2021 16:54:18 GMT, /api/users/user1/favourites_show GET 
+-, Thu, 30 Dec 2021 16:54:19 GMT, /api/users/user1 GET 
+-, Thu, 30 Dec 2021 16:54:31 GMT, /api/users/user1/favourites GET 
+-, Thu, 30 Dec 2021 16:54:31 GMT, /api/users/user1/favourites GET 
+-, Thu, 30 Dec 2021 17:10:48 GMT, /api/movies?page=1 GET 
+-, Thu, 30 Dec 2021 17:10:48 GMT, /api/genres GET 
+-, Thu, 30 Dec 2021 17:10:48 GMT, /api/languages GET 
+-, Thu, 30 Dec 2021 17:10:57 GMT, /api/users POST 
+-, Thu, 30 Dec 2021 17:10:57 GMT, /api/users/user1/favourites GET 
+-, Thu, 30 Dec 2021 17:10:57 GMT, /api/users/user1/favourites_show GET 
+-, Thu, 30 Dec 2021 17:10:58 GMT, /api/users/user1 GET 
+-, Thu, 30 Dec 2021 17:12:15 GMT, /api/users/user1/favourites GET 
+-, Thu, 30 Dec 2021 17:12:15 GMT, /api/users/user1/favourites GET 
+-, Thu, 30 Dec 2021 17:12:58 GMT, /api/users/favourites GET 
+-, Thu, 30 Dec 2021 17:12:58 GMT, /api/users/favourites GET 
+-, Thu, 30 Dec 2021 17:14:08 GMT, /api/users/favourites GET 
+-, Thu, 30 Dec 2021 17:14:08 GMT, /api/users/favourites GET 
+-, Thu, 30 Dec 2021 17:16:58 GMT, /api/users/favourites GET 
+-, Thu, 30 Dec 2021 17:16:59 GMT, /api/genres GET 
+-, Thu, 30 Dec 2021 17:16:59 GMT, /api/languages GET 
+-, Thu, 30 Dec 2021 17:17:09 GMT, /api/users POST 
+-, Thu, 30 Dec 2021 17:17:09 GMT, /api/users/user1/favourites GET 
+-, Thu, 30 Dec 2021 17:17:09 GMT, /api/movies?page=1 GET 
+-, Thu, 30 Dec 2021 17:17:10 GMT, /api/users/user1/favourites_show GET 
+-, Thu, 30 Dec 2021 17:17:10 GMT, /api/users/user1 GET 
+-, Thu, 30 Dec 2021 17:17:12 GMT, /api/users/user1/favourites POST 
+-, Thu, 30 Dec 2021 17:17:13 GMT, /api/users/user1/favourites POST 
+634649, Thu, 30 Dec 2021 17:17:15 GMT, /api/movies/634649 GET 
+624860, Thu, 30 Dec 2021 17:17:15 GMT, /api/movies/624860 GET 
+-, Thu, 30 Dec 2021 17:17:16 GMT, /api/users/user1/favourites GET 
+-, Thu, 30 Dec 2021 17:17:58 GMT, /api/users/user1/favourites GET 
+-, Thu, 30 Dec 2021 17:18:01 GMT, /api/users/favourites GET 
+-, Thu, 30 Dec 2021 17:18:01 GMT, /api/genres GET 
+-, Thu, 30 Dec 2021 17:18:02 GMT, /api/languages GET 
+-, Thu, 30 Dec 2021 17:18:07 GMT, /api/users POST 
+-, Thu, 30 Dec 2021 17:18:07 GMT, /api/movies?page=1 GET 
+-, Thu, 30 Dec 2021 17:18:08 GMT, /api/users/user1/favourites GET 
+-, Thu, 30 Dec 2021 17:18:08 GMT, /api/users/user1/favourites_show GET 
+-, Thu, 30 Dec 2021 17:18:08 GMT, /api/users/user1 GET 
+-, Thu, 30 Dec 2021 17:18:11 GMT, /api/users/user1/favourites GET 
+-, Thu, 30 Dec 2021 17:18:39 GMT, /api/users/user1/favourites GET 
+-, Thu, 30 Dec 2021 17:19:08 GMT, /api/users/user1/favourites GET 
+-, Thu, 30 Dec 2021 17:19:14 GMT, /api/users/favourites GET 
+-, Thu, 30 Dec 2021 17:19:14 GMT, /api/genres GET 
+-, Thu, 30 Dec 2021 17:19:14 GMT, /api/languages GET 
+-, Thu, 30 Dec 2021 17:19:20 GMT, /api/users POST 
+-, Thu, 30 Dec 2021 17:19:21 GMT, /api/movies?page=1 GET 
+-, Thu, 30 Dec 2021 17:19:21 GMT, /api/users/user1/favourites GET 
+-, Thu, 30 Dec 2021 17:19:21 GMT, /api/users/user1/favourites_show GET 
+-, Thu, 30 Dec 2021 17:19:22 GMT, /api/users/user1 GET 
+-, Thu, 30 Dec 2021 17:19:26 GMT, /api/users/user1/favourites GET 
+-, Thu, 30 Dec 2021 17:20:10 GMT, /api/users/user1/favourites DELETE 
+-, Thu, 30 Dec 2021 17:20:10 GMT, /api/users/user1/favourites DELETE 
+-, Thu, 30 Dec 2021 17:20:10 GMT, /api/users/user1/favourites GET 
+-, Thu, 30 Dec 2021 17:20:10 GMT, /api/users/user1/favourites GET 
+-, Thu, 30 Dec 2021 17:20:17 GMT, /api/users/user1/favourites POST 
+-, Thu, 30 Dec 2021 17:20:18 GMT, /api/users/user1/favourites POST 
+634649, Thu, 30 Dec 2021 17:20:20 GMT, /api/movies/634649 GET 
+624860, Thu, 30 Dec 2021 17:20:20 GMT, /api/movies/624860 GET 
+-, Thu, 30 Dec 2021 17:20:20 GMT, /api/users/user1/favourites GET 
+-, Thu, 30 Dec 2021 17:20:49 GMT, /api/users/user1/favourites GET 
+-, Thu, 30 Dec 2021 17:20:50 GMT, /api/users/user1/favourites GET 
+-, Thu, 30 Dec 2021 17:21:11 GMT, /api/users/favourites GET 
+-, Thu, 30 Dec 2021 17:21:19 GMT, /api/users POST 
+-, Thu, 30 Dec 2021 17:21:20 GMT, /api/users/user1/favourites GET 
+-, Thu, 30 Dec 2021 17:21:20 GMT, /api/users/user1/favourites_show GET 
+-, Thu, 30 Dec 2021 17:21:20 GMT, /api/users/user1 GET 
+-, Thu, 30 Dec 2021 17:21:25 GMT, /api/users/user1/favourites GET 
+-, Thu, 30 Dec 2021 17:22:40 GMT, /api/users/user1/favourites GET 
+-, Thu, 30 Dec 2021 17:22:45 GMT, /api/users/favourites GET 
+-, Thu, 30 Dec 2021 17:22:46 GMT, /api/genres GET 
+-, Thu, 30 Dec 2021 17:22:46 GMT, /api/languages GET 
+-, Thu, 30 Dec 2021 17:22:51 GMT, /api/users POST 
+-, Thu, 30 Dec 2021 17:22:52 GMT, /api/users/user1/favourites GET 
+-, Thu, 30 Dec 2021 17:22:52 GMT, /api/movies?page=1 GET 
+-, Thu, 30 Dec 2021 17:22:52 GMT, /api/users/user1/favourites_show GET 
+-, Thu, 30 Dec 2021 17:22:53 GMT, /api/users/user1 GET 
+-, Thu, 30 Dec 2021 17:22:56 GMT, /api/users/user1/favourites GET 
+-, Thu, 30 Dec 2021 17:28:55 GMT, /api/genres GET 
+-, Thu, 30 Dec 2021 17:28:55 GMT, /api/languages GET 
+-, Thu, 30 Dec 2021 17:40:55 GMT, /api/genres GET 
+-, Thu, 30 Dec 2021 17:40:55 GMT, /api/languages GET 
+-, Thu, 30 Dec 2021 17:44:10 GMT, /api/users/favourites GET 
+-, Thu, 30 Dec 2021 17:44:10 GMT, /api/genres GET 
+-, Thu, 30 Dec 2021 17:44:10 GMT, /api/languages GET 
+-, Thu, 30 Dec 2021 17:44:16 GMT, /api/users POST 
+-, Thu, 30 Dec 2021 17:44:17 GMT, /api/users/user1/favourites GET 
+-, Thu, 30 Dec 2021 17:44:17 GMT, /api/movies?page=1 GET 
+-, Thu, 30 Dec 2021 17:44:17 GMT, /api/users/user1/favourites_show GET 
+-, Thu, 30 Dec 2021 17:44:18 GMT, /api/users/user1 GET 
+-, Thu, 30 Dec 2021 17:44:22 GMT, /api/users/user1/favourites GET 
+-, Thu, 30 Dec 2021 17:45:23 GMT, /api/users/user1/favourites GET 
+-, Thu, 30 Dec 2021 17:49:07 GMT, /api/users/user1/favourites GET 
+-, Thu, 30 Dec 2021 17:49:15 GMT, /api/users/favourites GET 
+-, Thu, 30 Dec 2021 17:49:15 GMT, /api/genres GET 
+-, Thu, 30 Dec 2021 17:49:15 GMT, /api/languages GET 
+-, Thu, 30 Dec 2021 17:49:22 GMT, /api/users POST 
+-, Thu, 30 Dec 2021 17:49:22 GMT, /api/movies?page=1 GET 
+-, Thu, 30 Dec 2021 17:49:22 GMT, /api/users/user1/favourites GET 
+-, Thu, 30 Dec 2021 17:49:23 GMT, /api/users/user1/favourites_show GET 
+-, Thu, 30 Dec 2021 17:49:23 GMT, /api/users/user1 GET 
+-, Thu, 30 Dec 2021 17:49:27 GMT, /api/users/user1/favourites GET 
+-, Thu, 30 Dec 2021 17:50:22 GMT, /api/users/user1/favourites GET 
+-, Thu, 30 Dec 2021 17:52:04 GMT, /api/users/user1/favourites GET 
+-, Thu, 30 Dec 2021 17:53:16 GMT, /api/users/favourites GET 
+-, Thu, 30 Dec 2021 17:53:17 GMT, /api/genres GET 
+-, Thu, 30 Dec 2021 17:53:17 GMT, /api/languages GET 
+-, Thu, 30 Dec 2021 17:53:25 GMT, /api/users POST 
+-, Thu, 30 Dec 2021 17:53:25 GMT, /api/movies?page=1 GET 
+-, Thu, 30 Dec 2021 17:53:25 GMT, /api/users/user1/favourites GET 
+-, Thu, 30 Dec 2021 17:53:26 GMT, /api/users/user1/favourites_show GET 
+-, Thu, 30 Dec 2021 17:53:26 GMT, /api/users/user1 GET 
+-, Thu, 30 Dec 2021 17:53:29 GMT, /api/users/user1/favourites GET 
+-, Thu, 30 Dec 2021 18:07:45 GMT, /api/movies?page=1 GET 
+-, Thu, 30 Dec 2021 18:07:45 GMT, /api/genres GET 
+-, Thu, 30 Dec 2021 18:07:45 GMT, /api/languages GET 

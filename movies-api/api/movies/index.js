@@ -15,6 +15,8 @@ import {
 
 const router = express.Router(); 
 
+//const morgan = require('morgan');
+
 router.get('/', asyncHandler(async (req, res) => {
     //const upcomingMovies = await getUpcomingMovies(page);
     //res.status(200).json(upcomingMovies);
