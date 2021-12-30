@@ -23,16 +23,6 @@ const errHandler = (err, req, res, next) => {
 
 const app = express();
 
-/*
-app.all('*', (req, res, next) => {
-  const err = new Error(`Can't find ${req.originalUrl} on this server!`);
-  err.status = 'fail';
-  err.statusCode = 404;
-
-  next(err);
-});
-*/
-
 const fs = require('fs');
 
 const path = require('path');
@@ -61,6 +51,16 @@ app.use((err, req, res, next) => {
   });
 });
 
+*/
+
+/*
+app.all('*', (req, res, next) => {
+  const err = new Error(`Can't find ${req.originalUrl} on this server!`);
+  err.status = 'fail';
+  err.statusCode = 404;
+
+  next(err);
+});
 */
 
 morgan.token('id', (req) => req.params.id);

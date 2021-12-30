@@ -17,6 +17,7 @@ import { useQuery } from "react-query";
 import Spinner from '../spinner'
 import { AuthContext } from "../../contexts/authContext";
 import { getFavouriteMovies } from "../.././api/movie-api";
+import { getMovie } from "../.././api/tmdb-api";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -102,19 +103,25 @@ export default function AnalyticsCard(props) {
 
   */
 
+  //const context = useContext(AuthContext);
+
   const context = useContext(AuthContext);
 
   const numFavourites = context.favorites.length;
 
-  const userFavourites = {};
+  const favorites = context.favorites;
 
+  console.log(favorites);
+
+  /*
   const getUserFavourites = async (array) => {
     array = await getFavouriteMovies(context.userName);
     //return array;
     console.log("Array" + array);
   }
+  */
 
-  console.log(getUserFavourites(userFavourites));
+  //getUserFavourites(userFavourites);
 
   //console.log(newArray);
 
@@ -122,18 +129,49 @@ export default function AnalyticsCard(props) {
 
   var maxEl = 0;
 
-  if(userFavourites.length > 0) {
+  if(favorites.length > 0) {
 
-  var genres = {};
+  var genres = [];
 
-  console.log(userFavourites.genres.length);
+  //console.log(userFavourites.genres.length);
 
-  for(let i = 0; i < userFavourites.genres.length; i++) {
-      genres[i] = userFavourites.genres[i];
+  console.log(favorites[0].genres[0].name);
+
+  let index = 0;
+  for(var i = 0; i < favorites.length; i++) {
+      console.log(i);
+      //console.log(favorites[i].genres[i].name);
+      if(favorites[i].genres) {
+          //const hello = 0;
+        for(var j = 0; j < favorites[i].genres.length; j++) {
+            console.log(i + "" + j);
+
+            console.log(favorites[i].genres[j].name);
+            genres[index] = favorites[i].genres[j].name;
+            index++;
+        }
+    }
+    else {
+        //const hello = 0;
+        for(var k = 0; k < favorites[i].genre_ids.length; k++) {
+            console.log(i + "" + k);
+    
+              console.log(favorites[i].genres_ids[k].name);
+              genres[index] = favorites[i].genres_ids[k].name;
+              index++;
+          }
+    }
   }
+
+  //genres[0] = "Test";
+  //genres[1] = "Test";
+  //genres[2] = "Hello";
+
+  console.log(genres);
 
   var modeMap = {};
   maxEl = genres[0];
+  console.log(maxEl);
   var maxCount = 1
 
   for(let i = 0; i < genres.length; i++) {
@@ -149,6 +187,8 @@ export default function AnalyticsCard(props) {
           maxCount = modeMap[el];
       }
   }
+
+  console.log(maxEl);
 }
 
   return (
