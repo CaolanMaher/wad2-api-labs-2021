@@ -135,31 +135,31 @@ export default function AnalyticsCard(props) {
 
   //console.log(userFavourites.genres.length);
 
-  console.log(favorites[0].genres[0].name);
+  //console.log(favorites[0].genres[0].name);
 
   let index = 0;
   for(var i = 0; i < favorites.length; i++) {
-      console.log(i);
-      //console.log(favorites[i].genres[i].name);
-      if(favorites[i].genres) {
-          //const hello = 0;
-        for(var j = 0; j < favorites[i].genres.length; j++) {
-            console.log(i + "" + j);
+    console.log(i);
+    //console.log(favorites[i].genres[i].name);
+    if(favorites[i].genres) {
+       //const hello = 0;
+      for(var j = 0; j < favorites[i].genres.length; j++) {
+          console.log(i + "" + j);
 
-            console.log(favorites[i].genres[j].name);
-            genres[index] = favorites[i].genres[j].name;
-            index++;
-        }
+          console.log(favorites[i].genres[j].name);
+          genres[index] = favorites[i].genres[j].name;
+           index++;
+       }
     }
-    else {
-        //const hello = 0;
-        for(var k = 0; k < favorites[i].genre_ids.length; k++) {
-            console.log(i + "" + k);
-    
-              console.log(favorites[i].genres_ids[k].name);
-              genres[index] = favorites[i].genres_ids[k].name;
-              index++;
-          }
+    else if(favorites[i].genre_ids) {
+      //const hello = 0;
+      for(var k = 0; k < favorites[i].genre_ids.length; k++) {
+           console.log(i + "" + k);
+  
+            //console.log(favorites[i].genres_ids[k].name);
+            //genres[index] = favorites[i].genres_ids[k].name;
+            index++;
+     }
     }
   }
 

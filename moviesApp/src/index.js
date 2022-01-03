@@ -45,21 +45,21 @@ const App = () => {
           <MoviesContextProvider>
             {" "}
             <Switch>
-              <Route exact path="/tvshows" component={TVShowsPage} /> 
-              <Route exact path="/movies/upcoming" component={UpcomingMoviesPage} />
-              <Route exact path="/movies/top_rated" component={TopRatedMoviePage} />
-              <Route exact path="/reviews/form" component={AddMovieReviewPage} />
-              <Route path="/update" component={UpdatePage} />
+              <PrivateRoute exact path="/tvshows" component={TVShowsPage} /> 
+              <PrivateRoute exact path="/movies/upcoming" component={UpcomingMoviesPage} />
+              <PrivateRoute exact path="/movies/top_rated" component={TopRatedMoviePage} />
+              <PrivateRoute exact path="/reviews/form" component={AddMovieReviewPage} />
+              <PrivateRoute path="/update" component={UpdatePage} />
               <Route path="/login" component={LoginPage} />
               <Route path="/signup" component={SignUpPage} />
-              <Route path="/reviews/:id" component={MovieReviewPage} />
-              <Route path="/tvshowreviews/:id" component={TVShowReviewPage} />
-              <Route exact path="/movies/favorites" component={FavoriteMoviesPage} />
-              <Route exact path="/tvshows/favorites" component={FavoriteTVShowsPage} />
-              <Route exact path="/movies/playlist" component={PlaylistMoviesPage} />
-              <Route path="/movies/:id" component={MoviePage} />
-              <Route path="/tvshows/:id" component={TVShowDetailsPage} />
-              <Route exact path="/" component={HomePage} />
+              <PrivateRoute path="/reviews/:id" component={MovieReviewPage} />
+              <PrivateRoute path="/tvshowreviews/:id" component={TVShowReviewPage} />
+              <PrivateRoute exact path="/movies/favorites" component={FavoriteMoviesPage} />
+              <PrivateRoute exact path="/tvshows/favorites" component={FavoriteTVShowsPage} />
+              <PrivateRoute exact path="/movies/playlist" component={PlaylistMoviesPage} />
+              <PrivateRoute path="/movies/:id" component={MoviePage} />
+              <PrivateRoute path="/tvshows/:id" component={TVShowDetailsPage} />
+              <PrivateRoute exact path="/" component={HomePage} />
               <Redirect from="*" to="/" />
             </Switch>
           </MoviesContextProvider>
